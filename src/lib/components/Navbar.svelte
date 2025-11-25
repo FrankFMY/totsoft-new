@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { CheckCircle, Menu, X } from 'lucide-svelte';
+	import { CheckCircleIcon, MenuIcon, XIcon } from 'lucide-svelte';
 	import { COMPANY_INFO } from '$lib/config/constants';
 
 	let isScrolled = $state(false);
@@ -61,7 +61,7 @@
 				<span
 					class="text-[10px] uppercase tracking-widest text-primary-400 flex items-center gap-1 mt-0.5"
 				>
-					<CheckCircle size={10} /> Аккредитовано
+					<CheckCircleIcon size={10} /> Аккредитовано
 				</span>
 			</div>
 		</button>
@@ -108,9 +108,9 @@
 				aria-expanded={isMenuOpen}
 			>
 				{#if isMenuOpen}
-					<X size={28} />
+					<XIcon size={28} />
 				{:else}
-					<Menu size={28} />
+					<MenuIcon size={28} />
 				{/if}
 			</button>
 		</div>

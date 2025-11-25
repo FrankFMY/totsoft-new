@@ -1,11 +1,11 @@
 <script lang="ts">
 	import {
-		CheckCircle2,
-		Clock,
-		FileCheck,
-		Shield,
-		Users,
-		Zap,
+		CheckCircle2Icon,
+		ClockIcon,
+		FileCheck2Icon,
+		ShieldIcon,
+		Users2Icon,
+		ZapIcon,
 	} from 'lucide-svelte';
 	import { COMPANY_INFO } from '$lib/config/constants';
 	import { checkAccreditation } from '$lib/utils/checkAccreditation';
@@ -15,37 +15,37 @@
 		{
 			title: 'Юридическая прозрачность',
 			desc: 'Полный комплект документов. Аккредитация и лицензии. Финансовые гарантии.',
-			icon: Shield,
+			icon: ShieldIcon,
 			iconColor: 'text-primary-400',
 		},
 		{
 			title: 'Собственная методология',
 			desc: 'Проверенные процессы разработки. Регулярная отчетность. Контроль качества на каждом этапе.',
-			icon: FileCheck,
+			icon: FileCheck2Icon,
 			iconColor: 'text-blue-400',
 		},
 		{
 			title: 'Опытные архитекторы',
 			desc: 'Tech Lead на каждом проекте. Senior/Middle разработчики в штате. Средний опыт команды: 5+ лет.',
-			icon: Users,
+			icon: Users2Icon,
 			iconColor: 'text-green-400',
 		},
 		{
 			title: 'Гарантия результата',
 			desc: 'Прописанные SLA. Страхование рисков. Штрафные санкции за срыв сроков.',
-			icon: CheckCircle2,
+			icon: CheckCircle2Icon,
 			iconColor: 'text-purple-400',
 		},
 		{
 			title: 'Быстрый старт',
 			desc: 'Формирование команды за 72 часа. Готовые шаблоны и решения. Параллельная работа над модулями.',
-			icon: Zap,
+			icon: ZapIcon,
 			iconColor: 'text-yellow-400',
 		},
 		{
 			title: 'Долгосрочное партнерство',
 			desc: 'Техподдержка после сдачи. Масштабирование команды. Накопление экспертизы в вашем домене.',
-			icon: Clock,
+			icon: ClockIcon,
 			iconColor: 'text-indigo-400',
 		},
 	];

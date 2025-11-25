@@ -1,5 +1,10 @@
 <script lang="ts">
-	import { ArrowRight, Cpu, ShieldCheck, Zap } from 'lucide-svelte';
+	import {
+		ArrowRightIcon,
+		CpuIcon,
+		ShieldCheckIcon,
+		ZapIcon,
+	} from 'lucide-svelte';
 </script>
 
 <section
@@ -25,7 +30,7 @@
 		<div
 			class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 animate-fade-in-up hover:bg-white/10 transition-colors cursor-default"
 		>
-			<ShieldCheck
+			<ShieldCheckIcon
 				class="text-primary-400"
 				size={16}
 			/>
@@ -63,7 +68,7 @@
 				href="#contact"
 				class="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-primary-600/25 hover:shadow-primary-600/40 hover:-translate-y-1"
 			>
-				Обсудить задачу <ArrowRight size={20} />
+				Обсудить задачу <ArrowRightIcon size={20} />
 			</a>
 			<a
 				href="#services"
@@ -108,7 +113,7 @@
 				<div
 					class="text-3xl font-bold text-white flex justify-center items-center gap-2"
 				>
-					<Zap
+					<ZapIcon
 						size={24}
 						class="text-yellow-400"
 					/>
@@ -126,7 +131,7 @@
 				<div
 					class="text-3xl font-bold text-white flex justify-center items-center gap-2"
 				>
-					<Cpu
+					<CpuIcon
 						size={24}
 						class="text-blue-500"
 					/>

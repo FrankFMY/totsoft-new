@@ -1,5 +1,10 @@
 <script lang="ts">
-	import { FileText, Rocket, Settings, Users } from 'lucide-svelte';
+	import {
+		FileTextIcon,
+		RocketIcon,
+		SettingsIcon,
+		Users2Icon,
+	} from 'lucide-svelte';
 	import type { ServiceItem } from '$lib/types';
 
 	const services: Array<
@@ -9,21 +14,21 @@
 			title: 'Тендерная разработка',
 			description:
 				'Работа по ТЗ заказчика. Соблюдение ГОСТ 34 и требований 44/223-ФЗ. Юридическое сопровождение. Поставка под ключ с гарантией.',
-			icon: FileText,
+			icon: FileTextIcon,
 			iconColor: 'text-primary-400',
 		},
 		{
 			title: 'IT-Аутсорсинг и Аутстафф',
 			description:
 				'Усиление команд заказчика нашими специалистами. Выделенные команды (2-10 человек). Стек: Tech Lead, Frontend, Backend, DevOps, QA, PJM. Замена специалистов в течение 7 дней.',
-			icon: Users,
+			icon: Users2Icon,
 			iconColor: 'text-blue-400',
 		},
 		{
 			title: 'Комплексная разработка',
 			description:
 				'MVP и продуктовая разработка. Highload-системы и микросервисы. Корпоративное ПО под ключ. Техническая поддержка и развитие.',
-			icon: Rocket,
+			icon: RocketIcon,
 			iconColor: 'text-green-400',
 		},
 	];
@@ -56,7 +61,7 @@
 				href="#contact"
 				class="hidden md:inline-flex items-center gap-2 text-primary-400 font-medium hover:text-primary-300 transition-colors"
 			>
-				Запросить прайс-лист <Settings size={16} />
+				Запросить прайс-лист <SettingsIcon size={16} />
 			</a>
 		</div>
 
@@ -88,7 +93,7 @@
 				href="#contact"
 				class="inline-flex items-center gap-2 text-primary-400 font-medium"
 			>
-				Запросить прайс-лист <Settings size={16} />
+				Запросить прайс-лист <SettingsIcon size={16} />
 			</a>
 		</div>
 	</div>

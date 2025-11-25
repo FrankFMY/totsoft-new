@@ -1,5 +1,10 @@
 <script lang="ts">
-	import { CircleAlert, CircleCheck, Loader, Send } from 'lucide-svelte';
+	import {
+		CircleAlertIcon,
+		CircleCheckIcon,
+		Loader2Icon,
+		SendIcon,
+	} from 'lucide-svelte';
 	import { CONTACT_CONFIG } from '$lib/config/constants';
 	import { submitContactForm } from '$lib/services/api';
 	import { ContactStatus } from '$lib/types';
@@ -186,7 +191,7 @@
 						<div
 							class="w-20 h-20 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6"
 						>
-							<CircleCheck class="text-green-500 w-10 h-10" />
+							<CircleCheckIcon class="text-green-500 w-10 h-10" />
 						</div>
 						<h3 class="text-2xl font-bold text-white mb-2">
 							Заявка отправлена!
@@ -221,7 +226,7 @@
 							<div
 								class="bg-red-500/10 border border-red-500/30 rounded-xl p-4 flex items-start gap-3"
 							>
-								<CircleAlert
+								<CircleAlertIcon
 									class="text-red-400 w-5 h-5 shrink-0 mt-0.5"
 								/>
 								<div>
@@ -389,21 +394,21 @@
 						<div>
 							<label
 								for="privacy-consent"
-								class="flex items-start gap-3 cursor-pointer group"
+								class="flex items-center gap-3 cursor-pointer group"
 							>
 								<input
 									id="privacy-consent"
 									type="checkbox"
 									checked={privacyConsent}
 									onchange={handlePrivacyConsentChange}
-									class="mt-1 w-5 h-5 rounded border-white/20 bg-dark-900 text-primary-600 focus:ring-2 focus:ring-primary-500 focus:ring-offset-0 cursor-pointer"
+									class="w-5 h-5 rounded border-white/20 bg-dark-900 text-primary-600 focus:ring-2 focus:ring-primary-500 focus:ring-offset-0 cursor-pointer shrink-0"
 									aria-invalid={!!errors.privacyConsent}
 									aria-describedby={errors.privacyConsent ?
 										'privacy-error'
 									:	undefined}
 								/>
 								<span
-									class="text-sm text-slate-400 group-hover:text-slate-300 transition-colors"
+									class="text-sm text-slate-400 group-hover:text-slate-300 transition-colors leading-relaxed"
 								>
 									Я согласен на
 									<a
@@ -432,14 +437,14 @@
 							aria-label="Отправить заявку"
 						>
 							{#if status === ContactStatus.SENDING}
-								<Loader
+								<Loader2Icon
 									class="animate-spin"
 									size={20}
 									aria-hidden="true"
 								/>
 								Отправка...
 							{:else}
-								<Send
+								<SendIcon
 									size={20}
 									aria-hidden="true"
 								/>

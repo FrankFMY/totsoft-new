@@ -1,10 +1,10 @@
 <script lang="ts">
 	import {
-		CheckCircle2,
-		FileText,
-		Server,
-		ShieldCheck,
-		Users,
+		CheckCircle2Icon,
+		FileTextIcon,
+		ServerIcon,
+		ShieldCheckIcon,
+		Users2Icon,
 	} from 'lucide-svelte';
 
 	interface TrustItem {
@@ -19,32 +19,32 @@
 			title: 'Аккредитованная IT-компания',
 			description:
 				'Официальный статус и соответствие требованиям Минцифры',
-			icon: ShieldCheck,
+			icon: ShieldCheckIcon,
 			iconColor: 'text-primary-400',
 		},
 		{
 			title: 'Работаем по 44-ФЗ и 223-ФЗ',
 			description: 'Готовность к тендерным процедурам и спецсчетам',
-			icon: FileText,
+			icon: FileTextIcon,
 			iconColor: 'text-blue-400',
 		},
 		{
 			title: 'Команда уровня Senior/Middle+',
 			description: 'Штат квалифицированных инженеров с опытом 5+ лет',
-			icon: Users,
+			icon: Users2Icon,
 			iconColor: 'text-green-400',
 		},
 		{
 			title: 'Собственные HighLoad-продукты',
 			description:
 				'Развиваем внутренние IT-платформы. Долгий горизонт планирования',
-			icon: Server,
+			icon: ServerIcon,
 			iconColor: 'text-purple-400',
 		},
 		{
 			title: 'Гарантия по договору',
 			description: 'Финансовая ответственность и возможность постоплаты',
-			icon: CheckCircle2,
+			icon: CheckCircle2Icon,
 			iconColor: 'text-yellow-400',
 		},
 	];

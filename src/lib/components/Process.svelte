@@ -1,10 +1,10 @@
 <script lang="ts">
 	import {
-		Cog,
-		FileCode,
-		Headphones,
-		MessageSquare,
-		Rocket,
+		CogIcon,
+		FileCode2Icon,
+		HeadphonesIcon,
+		MessageSquareIcon,
+		RocketIcon,
 	} from 'lucide-svelte';
 
 	const steps = [
@@ -12,31 +12,31 @@
 			id: '01',
 			title: 'Анализ и оценка',
 			desc: 'Изучение ТЗ / потребностей. Оценка сроков и бюджета. Формирование команды.',
-			icon: MessageSquare,
+			icon: MessageSquareIcon,
 		},
 		{
 			id: '02',
 			title: 'Договор и старт',
 			desc: 'Подписание контракта с SLA. Kickoff-встреча. Доступ к инфраструктуре.',
-			icon: FileCode,
+			icon: FileCode2Icon,
 		},
 		{
 			id: '03',
 			title: 'Разработка',
 			desc: 'Спринты по 2 недели. Еженедельные отчеты. Демо промежуточных результатов.',
-			icon: Cog,
+			icon: CogIcon,
 		},
 		{
 			id: '04',
 			title: 'Тестирование и сдача',
 			desc: 'Функциональное и нагрузочное тестирование. Документация. Передача в эксплуатацию.',
-			icon: Rocket,
+			icon: RocketIcon,
 		},
 		{
 			id: '05',
 			title: 'Поддержка',
 			desc: 'Гарантийное обслуживание. Доработки и масштабирование. Консультации.',
-			icon: Headphones,
+			icon: HeadphonesIcon,
 		},
 	];
 </script>

@@ -11,18 +11,13 @@ export interface ApiResponse {
 }
 
 /**
- * Отправка формы контакта
- * Поддерживает несколько вариантов:
- * 1. ElysiaJS Backend API (VITE_API_URL) - на собственном сервере
- * 2. SvelteKit API route (/api/send-email) - через SvelteKit
- * 3. Симуляция - для локальной разработки
+ * Отправка формы контакта через SvelteKit API route
+ * В dev режиме без SMTP_PASSWORD используется симуляция
  */
 export const submitContactForm = async (data: ContactFormData): Promise<ApiResponse> => {
   try {
-    // Определяем URL для отправки
-    // Если указан VITE_API_URL (для собственного сервера), используем его
-    // Иначе пробуем SvelteKit API route
-    const apiUrl = import.meta.env.VITE_API_URL || '/api/send-email';
+    // Отправляем на SvelteKit API route
+    const apiUrl = '/api/send-email';
 
     const response = await fetch(apiUrl, {
       method: 'POST',

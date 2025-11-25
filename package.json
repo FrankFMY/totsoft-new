@@ -30,6 +30,13 @@
 	"peerDependencies": {
 		"svelte": "^5.0.0"
 	},
+	"keywords": [
+		"svelte"
+	],
+	"dependencies": {
+		"lucide-svelte": "^0.554.0",
+		"nodemailer": "^7.0.10"
+	},
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^7.0.0",
 		"@sveltejs/kit": "^2.49.0",
@@ -38,17 +45,12 @@
 		"@tailwindcss/forms": "^0.5.10",
 		"@tailwindcss/typography": "^0.5.19",
 		"@tailwindcss/vite": "^4.1.17",
+		"@types/nodemailer": "^7.0.4",
 		"publint": "^0.3.15",
 		"svelte": "^5.44.0",
 		"svelte-check": "^4.3.4",
 		"tailwindcss": "^4.1.17",
 		"typescript": "^5.9.3",
 		"vite": "^7.2.4"
-	},
-	"keywords": [
-		"svelte"
-	],
-	"dependencies": {
-		"lucide-svelte": "^0.554.0"
 	}
 }
