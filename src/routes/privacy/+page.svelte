@@ -24,7 +24,7 @@
 		</div>
 
 		<!-- Content -->
-		<div class="prose prose-invert max-w-none space-y-8">
+		<div class="space-y-6">
 			<section class="bg-dark-800 rounded-2xl p-8 border border-white/10">
 				<h2 class="text-2xl font-bold text-white mb-4">1. Общие положения</h2>
 				<p class="text-slate-300 leading-relaxed mb-4">
@@ -42,7 +42,7 @@
 				<p class="text-slate-300 leading-relaxed mb-4">
 					При использовании Сайта мы можем собирать следующую информацию:
 				</p>
-				<ul class="list-disc list-inside text-slate-300 space-y-2 ml-4">
+				<ul class="list-disc list-inside text-slate-300 space-y-2">
 					<li>Имя и контактные данные (email, телефон)</li>
 					<li>Информация о проекте, которую вы предоставляете через форму обратной связи</li>
 					<li>Техническая информация (IP-адрес, тип браузера, операционная система)</li>
@@ -55,7 +55,7 @@
 				<p class="text-slate-300 leading-relaxed mb-4">
 					Персональные данные обрабатываются в следующих целях:
 				</p>
-				<ul class="list-disc list-inside text-slate-300 space-y-2 ml-4">
+				<ul class="list-disc list-inside text-slate-300 space-y-2">
 					<li>Обработка заявок и обращений пользователей</li>
 					<li>Связь с пользователями по вопросам их запросов</li>
 					<li>Улучшение качества работы Сайта</li>
@@ -79,7 +79,7 @@
 				<p class="text-slate-300 leading-relaxed mb-4">
 					Мы не передаем персональные данные третьим лицам, за исключением следующих случаев:
 				</p>
-				<ul class="list-disc list-inside text-slate-300 space-y-2 ml-4">
+				<ul class="list-disc list-inside text-slate-300 space-y-2">
 					<li>Когда это необходимо для выполнения вашего запроса</li>
 					<li>Когда это требуется по законодательству Российской Федерации</li>
 					<li>С вашего явного согласия</li>
@@ -89,7 +89,7 @@
 			<section class="bg-dark-800 rounded-2xl p-8 border border-white/10">
 				<h2 class="text-2xl font-bold text-white mb-4">6. Права пользователей</h2>
 				<p class="text-slate-300 leading-relaxed mb-4">Вы имеете право:</p>
-				<ul class="list-disc list-inside text-slate-300 space-y-2 ml-4">
+				<ul class="list-disc list-inside text-slate-300 space-y-2">
 					<li>Получать информацию о ваших персональных данных</li>
 					<li>Требовать исправления неточных данных</li>
 					<li>Требовать удаления ваших персональных данных</li>
