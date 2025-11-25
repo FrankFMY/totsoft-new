@@ -7,50 +7,19 @@
 	const categories: TechCategory[] = [
 		{
 			title: 'Языки программирования',
-			technologies: [
-				'TypeScript',
-				'JavaScript',
-				'Python',
-				'Java',
-				'C#',
-				'Go',
-				'PHP',
-			],
+			technologies: ['TypeScript', 'JavaScript', 'Python', 'Java', 'C#', 'Go', 'PHP']
 		},
 		{
 			title: 'Backend',
-			technologies: [
-				'Node.js',
-				'Bun',
-				'Express',
-				'NestJS',
-				'FastAPI',
-				'Django',
-				'Spring',
-				'.NET',
-			],
+			technologies: ['Node.js', 'Bun', 'Express', 'NestJS', 'FastAPI', 'Django', 'Spring', '.NET']
 		},
 		{
 			title: 'Frontend',
-			technologies: [
-				'React',
-				'Next.js',
-				'Vue',
-				'Angular',
-				'SvelteKit',
-				'TailwindCSS',
-				'Bootstrap',
-			],
+			technologies: ['React', 'Next.js', 'Vue', 'Angular', 'SvelteKit', 'TailwindCSS', 'Bootstrap']
 		},
 		{
 			title: 'Мобильная разработка',
-			technologies: [
-				'React Native',
-				'Flutter',
-				'Swift',
-				'Kotlin',
-				'Capacitor',
-			],
+			technologies: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Capacitor']
 		},
 		{
 			title: 'CMS и платформы',
@@ -65,8 +34,8 @@
 				'Selectel S3',
 				'Yandex.Cloud',
 				'ЮKassa',
-				'amoCRM',
-			],
+				'amoCRM'
+			]
 		},
 		{
 			title: 'Базы данных',
@@ -81,8 +50,8 @@
 				'SurrealDB',
 				'Supabase',
 				'Firebase',
-				'ELK Stack',
-			],
+				'ELK Stack'
+			]
 		},
 		{
 			title: 'Инфраструктура и DevOps',
@@ -95,8 +64,8 @@
 				'Azure',
 				'GitHub Actions',
 				'GitLab CI',
-				'Jenkins',
-			],
+				'Jenkins'
+			]
 		},
 		{
 			title: 'Тестирование',
@@ -113,9 +82,9 @@
 				'Storybook',
 				'k6',
 				'SonarQube',
-				'Testing Library',
-			],
-		},
+				'Testing Library'
+			]
+		}
 	];
 
 	const allTechnologies = categories.flatMap((cat) => cat.technologies);
@@ -123,30 +92,24 @@
 		...allTechnologies,
 		...allTechnologies,
 		...allTechnologies,
-		...allTechnologies,
+		...allTechnologies
 	];
 </script>
 
-<section
-	id="stack"
-	class="py-16 bg-dark-800 border-y border-white/5 overflow-hidden relative"
->
+<section id="stack" class="py-16 bg-dark-800 border-y border-white/5 overflow-hidden relative">
 	<div class="max-w-7xl mx-auto px-4 mb-12">
 		<div class="text-center mb-10">
 			<h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
 				Технологии, с которыми мы работаем
 			</h3>
 			<p class="text-slate-400 max-w-2xl mx-auto">
-				Используем современные Open Source решения. Поддерживаем
-				импортозамещение.
+				Используем современные Open Source решения. Поддерживаем импортозамещение.
 			</p>
 		</div>
 
 		<!-- Categories Grid -->
-		<div
-			class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12"
-		>
-			{#each categories as category}
+		<div class="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+			{#each categories as category (category.title)}
 				<div
 					class="bg-dark-900 border border-white/5 rounded-2xl p-6 hover:border-primary-500/30 transition-all"
 				>
@@ -154,7 +117,7 @@
 						{category.title}
 					</h4>
 					<div class="flex flex-wrap gap-2 justify-center">
-						{#each category.technologies as tech}
+						{#each category.technologies as tech (tech)}
 							<span
 								class="px-3 py-1.5 bg-dark-800 border border-white/10 rounded-lg text-sm text-slate-300 hover:text-white hover:border-primary-500/50 transition-colors"
 							>
@@ -167,13 +130,9 @@
 		</div>
 
 		<!-- Marquee Animation -->
-		<div
-			class="relative flex overflow-x-hidden py-8 bg-dark-900/50 rounded-2xl"
-		>
-			<div
-				class="animate-marquee whitespace-nowrap flex gap-12 items-center"
-			>
-				{#each marqueeTechnologies as tech, idx}
+		<div class="relative flex overflow-x-hidden py-8 bg-dark-900/50 rounded-2xl">
+			<div class="animate-marquee whitespace-nowrap flex gap-12 items-center">
+				{#each marqueeTechnologies as tech, i (i)}
 					<span
 						class="text-xl md:text-3xl font-bold text-slate-600 hover:text-white hover:scale-110 transition-all cursor-default select-none"
 					>

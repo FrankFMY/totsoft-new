@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { resolve } from '$app/paths';
 	import { COMPANY_INFO } from '$lib/config/constants';
 </script>
 
@@ -20,9 +21,7 @@
 					<p>ОКПО: {COMPANY_INFO.okpo}</p>
 					<p>ОКТМО: {COMPANY_INFO.oktmo}</p>
 					<p>
-						ОКВЭД: {COMPANY_INFO.okved
-							.map((item: { code: string }) => item.code)
-							.join(', ')}
+						ОКВЭД: {COMPANY_INFO.okved.map((item: { code: string }) => item.code).join(', ')}
 					</p>
 				</div>
 			</div>
@@ -31,20 +30,15 @@
 			<div>
 				<h4 class="text-lg font-semibold text-white mb-3">Контакты</h4>
 				<div class="text-slate-400 text-sm space-y-2">
-					{#each COMPANY_INFO.contacts.phones as phoneContact}
+					{#each COMPANY_INFO.contacts.phones as phoneContact (phoneContact.phone)}
 						<p>
 							<a
-								href="tel:{phoneContact.phone.replace(
-									/\s/g,
-									'',
-								)}"
+								href="tel:{phoneContact.phone.replace(/\s/g, '')}"
 								class="hover:text-white transition-colors"
 							>
 								{phoneContact.phone}
 							</a>
-							<span class="block text-xs text-slate-500 mt-1"
-								>{phoneContact.contact}</span
-							>
+							<span class="block text-xs text-slate-500 mt-1">{phoneContact.contact}</span>
 						</p>
 					{/each}
 					<p>
@@ -57,10 +51,7 @@
 					</p>
 					<p>
 						<a
-							href="https://t.me/{COMPANY_INFO.contacts.telegram.replace(
-								'@',
-								'',
-							)}"
+							href="https://t.me/{COMPANY_INFO.contacts.telegram.replace('@', '')}"
 							target="_blank"
 							rel="noopener noreferrer"
 							class="hover:text-white transition-colors"
@@ -76,26 +67,18 @@
 
 			<!-- Links -->
 			<div>
-				<h4 class="text-lg font-semibold text-white mb-3">
-					Информация
-				</h4>
+				<h4 class="text-lg font-semibold text-white mb-3">Информация</h4>
 				<div class="flex flex-col gap-2">
-					<a
-						href="#contact"
-						class="text-slate-400 hover:text-white transition-colors text-sm"
-					>
+					<a href="#contact" class="text-slate-400 hover:text-white transition-colors text-sm">
 						Тендеры
 					</a>
 					<a
-						href="/privacy"
+						href={resolve('/privacy')}
 						class="text-slate-400 hover:text-white transition-colors text-sm"
 					>
 						Политика конфиденциальности
 					</a>
-					<a
-						href="#contact"
-						class="text-slate-400 hover:text-white transition-colors text-sm"
-					>
+					<a href="#contact" class="text-slate-400 hover:text-white transition-colors text-sm">
 						Контакты
 					</a>
 				</div>
@@ -103,22 +86,18 @@
 
 			<!-- Bank Details -->
 			<div>
-				<h4 class="text-lg font-semibold text-white mb-3">
-					Банковские реквизиты
-				</h4>
+				<h4 class="text-lg font-semibold text-white mb-3">Банковские реквизиты</h4>
 				<div class="text-slate-400 text-xs space-y-1">
 					<p>
 						<span class="text-slate-500">Банк:</span>
 						{COMPANY_INFO.bankDetails.bank}
 					</p>
 					<p>
-						<span class="text-slate-500">Расчётный счет:</span>{' '}
+						<span class="text-slate-500">Расчётный счет:</span>
 						{COMPANY_INFO.bankDetails.account}
 					</p>
 					<p>
-						<span class="text-slate-500"
-							>Корреспондентский счёт:</span
-						>{' '}
+						<span class="text-slate-500">Корреспондентский счёт:</span>
 						{COMPANY_INFO.bankDetails.correspondentAccount}
 					</p>
 					<p>
@@ -130,9 +109,7 @@
 		</div>
 
 		<!-- Copyright -->
-		<div
-			class="pt-8 border-t border-white/5 text-center text-slate-500 text-sm"
-		>
+		<div class="pt-8 border-t border-white/5 text-center text-slate-500 text-sm">
 			<p>
 				© {new Date().getFullYear()}
 				{COMPANY_INFO.name}. Все права защищены.

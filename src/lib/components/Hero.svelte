@@ -1,15 +1,8 @@
 <script lang="ts">
-	import {
-		ArrowRightIcon,
-		CpuIcon,
-		ShieldCheckIcon,
-		ZapIcon,
-	} from 'lucide-svelte';
+	import { ArrowRightIcon, CpuIcon, ShieldCheckIcon, ZapIcon } from 'lucide-svelte';
 </script>
 
-<section
-	class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20"
->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
 	<!-- Background Elements -->
 	<div class="absolute inset-0 z-0">
 		<div
@@ -30,13 +23,8 @@
 		<div
 			class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm mb-8 animate-fade-in-up hover:bg-white/10 transition-colors cursor-default"
 		>
-			<ShieldCheckIcon
-				class="text-primary-400"
-				size={16}
-			/>
-			<span class="text-sm font-medium text-primary-100"
-				>Аккредитованная IT-компания</span
-			>
+			<ShieldCheckIcon class="text-primary-400" size={16} />
+			<span class="text-sm font-medium text-primary-100">Аккредитованная IT-компания</span>
 		</div>
 
 		<h1
@@ -55,15 +43,11 @@
 			class="max-w-3xl text-lg md:text-xl text-slate-400 mb-10 animate-fade-in-up leading-relaxed"
 			style="animation-delay: 0.2s"
 		>
-			Аккредитованная IT-компания. Работаем по 44-ФЗ и 223-ФЗ. Выделенные
-			команды Senior/Middle разработчиков. Запуск проектной группы за 72
-			часа.
+			Аккредитованная IT-компания. Работаем по 44-ФЗ и 223-ФЗ. Выделенные команды Senior/Middle
+			разработчиков. Запуск проектной группы за 72 часа.
 		</p>
 
-		<div
-			class="flex flex-col sm:flex-row gap-4 animate-fade-in-up"
-			style="animation-delay: 0.3s"
-		>
+		<div class="flex flex-col sm:flex-row gap-4 animate-fade-in-up" style="animation-delay: 0.3s">
 			<a
 				href="#contact"
 				class="inline-flex items-center justify-center gap-2 bg-primary-600 hover:bg-primary-500 text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg shadow-primary-600/25 hover:shadow-primary-600/40 hover:-translate-y-1"
@@ -83,63 +67,33 @@
 			class="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 w-full max-w-5xl border-t border-white/5 pt-10 animate-fade-in-up"
 			style="animation-delay: 0.5s"
 		>
-			<div
-				class="text-center p-4 rounded-2xl hover:bg-white/5 transition-colors"
-			>
-				<div
-					class="text-3xl font-bold flex justify-center gap-1 text-primary-400"
-				>
-					Middle+
-				</div>
-				<div
-					class="text-sm text-slate-500 uppercase tracking-wide mt-2 font-medium"
-				>
+			<div class="text-center p-4 rounded-2xl hover:bg-white/5 transition-colors">
+				<div class="text-3xl font-bold flex justify-center gap-1 text-primary-400">Middle+</div>
+				<div class="text-sm text-slate-500 uppercase tracking-wide mt-2 font-medium">
 					Уровень специалистов
 				</div>
 			</div>
-			<div
-				class="text-center p-4 rounded-2xl hover:bg-white/5 transition-colors"
-			>
+			<div class="text-center p-4 rounded-2xl hover:bg-white/5 transition-colors">
 				<div class="text-3xl font-bold text-white">72ч</div>
-				<div
-					class="text-sm text-slate-500 uppercase tracking-wide mt-2 font-medium"
-				>
+				<div class="text-sm text-slate-500 uppercase tracking-wide mt-2 font-medium">
 					Запуск команды
 				</div>
 			</div>
-			<div
-				class="text-center p-4 rounded-2xl hover:bg-white/5 transition-colors"
-			>
-				<div
-					class="text-3xl font-bold text-white flex justify-center items-center gap-2"
-				>
-					<ZapIcon
-						size={24}
-						class="text-yellow-400"
-					/>
+			<div class="text-center p-4 rounded-2xl hover:bg-white/5 transition-colors">
+				<div class="text-3xl font-bold text-white flex justify-center items-center gap-2">
+					<ZapIcon size={24} class="text-yellow-400" />
 					<span class="text-white">44-ФЗ</span>
 				</div>
-				<div
-					class="text-sm text-slate-500 uppercase tracking-wide mt-2 font-medium"
-				>
+				<div class="text-sm text-slate-500 uppercase tracking-wide mt-2 font-medium">
 					Тендерная работа
 				</div>
 			</div>
-			<div
-				class="text-center p-4 rounded-2xl hover:bg-white/5 transition-colors"
-			>
-				<div
-					class="text-3xl font-bold text-white flex justify-center items-center gap-2"
-				>
-					<CpuIcon
-						size={24}
-						class="text-blue-500"
-					/>
+			<div class="text-center p-4 rounded-2xl hover:bg-white/5 transition-colors">
+				<div class="text-3xl font-bold text-white flex justify-center items-center gap-2">
+					<CpuIcon size={24} class="text-blue-500" />
 					<span>Senior+</span>
 				</div>
-				<div
-					class="text-sm text-slate-500 uppercase tracking-wide mt-2 font-medium"
-				>
+				<div class="text-sm text-slate-500 uppercase tracking-wide mt-2 font-medium">
 					Уровень команды
 				</div>
 			</div>

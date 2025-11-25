@@ -22,7 +22,7 @@
 		{ name: 'Услуги', href: '#services' },
 		{ name: 'Технологии', href: '#stack' },
 		{ name: 'Преимущества', href: '#about' },
-		{ name: 'Процесс', href: '#process' },
+		{ name: 'Процесс', href: '#process' }
 	];
 
 	const scrollToTop = () => {
@@ -31,13 +31,11 @@
 </script>
 
 <nav
-	class="fixed top-0 w-full z-50 transition-all duration-300 {isScrolled ?
-		'bg-dark-900/90 backdrop-blur-md border-b border-white/10 py-4'
-	:	'bg-transparent py-6'}"
+	class="fixed top-0 w-full z-50 transition-all duration-300 {isScrolled
+		? 'bg-dark-900/90 backdrop-blur-md border-b border-white/10 py-4'
+		: 'bg-transparent py-6'}"
 >
-	<div
-		class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center"
-	>
+	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
 		<!-- Logo -->
 		<button
 			type="button"
@@ -46,18 +44,10 @@
 			aria-label="Перейти наверх страницы"
 		>
 			<div class="w-10 h-10 flex items-center justify-center">
-				<img
-					src="/logo.svg"
-					alt="TOTSOFT"
-					class="w-10 h-10"
-				/>
+				<img src="/logo.svg" alt="TOTSOFT" class="w-10 h-10" />
 			</div>
 			<div class="flex flex-col">
-				<img
-					src="/logo-text.svg"
-					alt="TOTSOFT"
-					class="h-7"
-				/>
+				<img src="/logo-text.svg" alt="TOTSOFT" class="h-7" />
 				<span
 					class="text-[10px] uppercase tracking-widest text-primary-400 flex items-center gap-1 mt-0.5"
 				>
@@ -77,18 +67,11 @@
 				</a>
 			{/each}
 			<a
-				href="tel:{COMPANY_INFO.contacts.phones[0].phone.replace(
-					/\s/g,
-					'',
-				)}"
+				href="tel:{COMPANY_INFO.contacts.phones[0].phone.replace(/\s/g, '')}"
 				class="flex flex-col items-center text-white hover:text-primary-400 transition-colors"
 			>
-				<span class="text-base font-semibold"
-					>{COMPANY_INFO.contacts.phones[0].phone}</span
-				>
-				<span class="text-xs text-slate-400 text-center"
-					>Пн-Пт 9:00 - 18:00</span
-				>
+				<span class="text-base font-semibold">{COMPANY_INFO.contacts.phones[0].phone}</span>
+				<span class="text-xs text-slate-400 text-center">Пн-Пт 9:00 - 18:00</span>
 			</a>
 			<a
 				href="#contact"

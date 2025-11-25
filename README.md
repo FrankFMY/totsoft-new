@@ -27,12 +27,14 @@
 ## 🛠️ Установка
 
 1. Клонируйте репозиторий:
+
 ```bash
 git clone <repository-url>
 cd totsoft-new
 ```
 
 2. Установите зависимости:
+
 ```bash
 # С Bun (рекомендуется)
 bun install
@@ -44,6 +46,7 @@ pnpm install
 ```
 
 3. (Обязательно для продакшена) Создайте файл `.env` в корне проекта:
+
 ```env
 # SMTP настройки для Beget
 SMTP_USER=dev@totsoft.net
@@ -55,6 +58,7 @@ SMTP_PASSWORD=ваш_пароль_от_почты
 ### Режим разработки
 
 **Frontend (SvelteKit):**
+
 ```bash
 bun run dev
 # или
@@ -63,14 +67,13 @@ npm run dev
 
 Приложение будет доступно по адресу `http://localhost:5173`
 
-
 ### Сборка для продакшена
 
 **Frontend:**
+
 ```bash
 bun run build
 ```
-
 
 ### Превью продакшен сборки
 
@@ -138,6 +141,7 @@ totsoft-new/
 ### Переменные окружения
 
 **Переменные окружения:**
+
 - `SMTP_USER` - Email для отправки писем (dev@totsoft.net)
 - `SMTP_PASSWORD` - Пароль от почты для SMTP
 
@@ -180,6 +184,7 @@ totsoft-new/
 Форма отправляет данные через SvelteKit API route (`/api/send-email`).
 
 **SvelteKit API Route:**
+
 - Endpoint: `POST /api/send-email`
 - Валидация данных на сервере
 - Отправка писем через Beget SMTP (если настроен `SMTP_PASSWORD`)
@@ -189,16 +194,16 @@ totsoft-new/
 import { submitContactForm } from '$lib/services/api';
 
 const result = await submitContactForm({
-  name: 'Иван Иванов',
-  email: 'ivan@example.com',
-  phone: '+7 (999) 123-45-67',
-  description: 'Описание проекта...',
+	name: 'Иван Иванов',
+	email: 'ivan@example.com',
+	phone: '+7 (999) 123-45-67',
+	description: 'Описание проекта...'
 });
 
 if (result.success) {
-  console.log('Заявка отправлена!');
+	console.log('Заявка отправлена!');
 } else {
-  console.error('Ошибка:', result.error);
+	console.error('Ошибка:', result.error);
 }
 ```
 
@@ -226,7 +231,7 @@ import { validateEmail, validatePhone } from '$lib/utils/validation';
 
 const emailResult = validateEmail(email);
 if (!emailResult.isValid) {
-  console.error(emailResult.message);
+	console.error(emailResult.message);
 }
 ```
 
@@ -237,20 +242,22 @@ if (!emailResult.isValid) {
 SvelteKit поддерживает множество адаптеров для деплоя:
 
 **Vercel (рекомендуется):**
+
 ```bash
 npm i -D @sveltejs/adapter-vercel
 ```
 
 **Node.js сервер:**
+
 ```bash
 npm i -D @sveltejs/adapter-node
 ```
 
 **Статический сайт:**
+
 ```bash
 npm i -D @sveltejs/adapter-static
 ```
-
 
 ## 🤝 Вклад в проект
 

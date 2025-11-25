@@ -1,64 +1,56 @@
 <script lang="ts">
-	import {
-		CheckCircle2Icon,
-		FileTextIcon,
-		ServerIcon,
-		ShieldCheckIcon,
-		Users2Icon,
-	} from 'lucide-svelte';
+	import { CheckCircle2, FileText, Server, ShieldCheck, Users2 } from 'lucide-svelte';
+
+	type LucideIcon = typeof ShieldCheck;
 
 	interface TrustItem {
 		title: string;
 		description: string;
-		icon: any;
+		icon: LucideIcon;
 		iconColor: string;
 	}
 
 	const trustItems: TrustItem[] = [
 		{
 			title: 'Аккредитованная IT-компания',
-			description:
-				'Официальный статус и соответствие требованиям Минцифры',
-			icon: ShieldCheckIcon,
-			iconColor: 'text-primary-400',
+			description: 'Официальный статус и соответствие требованиям Минцифры',
+			icon: ShieldCheck,
+			iconColor: 'text-primary-400'
 		},
 		{
 			title: 'Работаем по 44-ФЗ и 223-ФЗ',
 			description: 'Готовность к тендерным процедурам и спецсчетам',
-			icon: FileTextIcon,
-			iconColor: 'text-blue-400',
+			icon: FileText,
+			iconColor: 'text-blue-400'
 		},
 		{
 			title: 'Команда уровня Senior/Middle+',
 			description: 'Штат квалифицированных инженеров с опытом 5+ лет',
-			icon: Users2Icon,
-			iconColor: 'text-green-400',
+			icon: Users2,
+			iconColor: 'text-green-400'
 		},
 		{
 			title: 'Собственные HighLoad-продукты',
-			description:
-				'Развиваем внутренние IT-платформы. Долгий горизонт планирования',
-			icon: ServerIcon,
-			iconColor: 'text-purple-400',
+			description: 'Развиваем внутренние IT-платформы. Долгий горизонт планирования',
+			icon: Server,
+			iconColor: 'text-purple-400'
 		},
 		{
 			title: 'Гарантия по договору',
 			description: 'Финансовая ответственность и возможность постоплаты',
-			icon: CheckCircle2Icon,
-			iconColor: 'text-yellow-400',
-		},
+			icon: CheckCircle2,
+			iconColor: 'text-yellow-400'
+		}
 	];
 </script>
 
 <section class="py-16 bg-dark-800 border-y border-white/5">
 	<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 		<div class="text-center mb-12">
-			<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
-				Почему нам доверяют
-			</h2>
+			<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">Почему нам доверяют</h2>
 			<p class="text-slate-400 max-w-2xl mx-auto">
-				Мы молодая компания, но каждый наш сотрудник — ветеран
-				индустрии. Надежность и экспертиза — наш главный актив.
+				Мы молодая компания, но каждый наш сотрудник — ветеран индустрии. Надежность и экспертиза —
+				наш главный актив.
 			</p>
 		</div>
 
