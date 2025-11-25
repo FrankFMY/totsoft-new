@@ -1,0 +1,11 @@
+# robots.txt для Totsoft Landing
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://totsoft.ru/sitemap.xml
+
+# Disallow admin and private areas (if any)
+Disallow: /api/
+Disallow: /admin/
+

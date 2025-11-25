@@ -1,0 +1,24 @@
+# Простой Dockerfile для деплоя на BrainyCP
+# Использование: docker build -t totsoft . && docker run -d -p 7000:3001 --env-file server/.env --name totsoft totsoft
+
+FROM node:22-alpine
+
+WORKDIR /app
+
+# Копируем server и dist
+COPY server/ ./server/
+COPY dist/ ./dist/
+
+# Устанавливаем зависимости только для server
+WORKDIR /app/server
+RUN npm install --production
+
+# Возвращаемся в корень
+WORKDIR /app
+
+# Открываем порт (по умолчанию 3001, но можно изменить через PORT в .env)
+EXPOSE 3001
+
+# Запускаем сервер
+CMD ["node", "server/index.js"]
+
