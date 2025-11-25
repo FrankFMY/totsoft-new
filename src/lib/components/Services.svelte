@@ -4,7 +4,7 @@
 
 	type LucideIcon = typeof FileText;
 
-	const services: Array<Omit<ServiceItem, 'icon'> & { icon: LucideIcon; iconColor: string }> = [
+	const services: Array<ServiceItem & { icon: LucideIcon; iconColor: string }> = [
 		{
 			title: 'Тендерная разработка',
 			description:

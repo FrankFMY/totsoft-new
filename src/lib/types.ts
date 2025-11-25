@@ -1,9 +1,6 @@
-import type { ComponentType } from 'svelte';
-
 export interface ServiceItem {
 	title: string;
 	description: string;
-	icon: ComponentType;
 }
 
 export interface ProjectAnalysis {

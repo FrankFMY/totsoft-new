@@ -95,9 +95,9 @@
 <section id="stack" class="py-16 bg-dark-800 border-y border-white/5 overflow-hidden relative">
 	<div class="max-w-7xl mx-auto px-4 mb-12">
 		<div class="text-center mb-10">
-			<h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
+			<h2 class="text-2xl md:text-3xl font-bold text-white mb-4">
 				Технологии, с которыми мы работаем
-			</h3>
+			</h2>
 			<p class="text-slate-400 max-w-2xl mx-auto">
 				Используем современные Open Source решения. Поддерживаем импортозамещение.
 			</p>
