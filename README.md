@@ -1,6 +1,8 @@
 # Totsoft Landing Page
 
-Современный корпоративный лендинг для IT-компании Тотсофт. Разработка высоконагруженных IT-решений для Государства и Бизнеса.
+Корпоративный лендинг для IT-компании **ООО Тотсофт**. Разработка высоконагруженных IT-решений для Государства и Бизнеса.
+
+🌐 **Сайт:** [https://totsoft.net](https://totsoft.net)
 
 ## 👨‍💻 Автор
 
@@ -11,270 +13,219 @@
 
 ## 🚀 Технологии
 
-- **SvelteKit 2** - современный full-stack фреймворк
-- **Svelte 5** - с Runes (новая реактивность)
-- **TypeScript** - строгая типизация
-- **Bun** - быстрый JavaScript runtime и пакетный менеджер (опционально)
-- **Tailwind CSS v4** - utility-first CSS фреймворк
-- **Vite** - быстрая сборка и разработка
-- **Lucide Svelte** - иконки
-- **Nodemailer** - отправка писем через SMTP (Beget)
+- **SvelteKit 2** — full-stack фреймворк
+- **Svelte 5** — с Runes (новая реактивность)
+- **TypeScript** — строгая типизация (`strict: true`)
+- **Bun** — JavaScript runtime и пакетный менеджер
+- **Tailwind CSS v4** — utility-first CSS
+- **Vite 7** — быстрая сборка
+- **Lucide Svelte** — иконки
+- **Nodemailer** — отправка писем через SMTP
 
 ## 📋 Требования
 
-- **Node.js 18+** или **Bun 1.0+** (опционально)
+- **Bun 1.0+** (рекомендуется) или **Node.js 20+**
 
 ## 🛠️ Установка
 
-1. Клонируйте репозиторий:
-
 ```bash
+# Клонирование
 git clone <repository-url>
-cd totsoft-new
-```
+cd totsoft-landing
 
-2. Установите зависимости:
-
-```bash
-# С Bun (рекомендуется)
+# Установка зависимостей
 bun install
 
-# Или с npm/pnpm
-npm install
-# или
-pnpm install
+# Копирование переменных окружения
+cp .env.example .env
+# Отредактируйте .env и добавьте SMTP_PASSWORD
 ```
 
-3. (Обязательно для продакшена) Создайте файл `.env` в корне проекта:
-
-```env
-# SMTP настройки для Beget
-SMTP_USER=dev@totsoft.net
-SMTP_PASSWORD=ваш_пароль_от_почты
-```
-
-## 🏃 Запуск
-
-### Режим разработки
-
-**Frontend (SvelteKit):**
+## 🏃 Локальная разработка
 
 ```bash
-bun run dev
-# или
-npm run dev
+bun dev
 ```
 
 Приложение будет доступно по адресу `http://localhost:5173`
 
-### Сборка для продакшена
+## 📦 Сборка и деплой
 
-**Frontend:**
+### 1. Сборка для продакшена
 
 ```bash
 bun run build
 ```
 
-### Превью продакшен сборки
+Создаст папку `build/` с готовым приложением.
+
+### 2. Запуск на сервере (BrainyCP / VPS)
 
 ```bash
-bun run preview
+# Установка зависимостей на сервере
+bun install --production
+
+# Сборка
+bun run build
+
+# Запуск
+HOST=0.0.0.0 PORT=3000 ORIGIN=https://totsoft.net bun build/index.js
 ```
 
-### Проверка типов
+### 3. Systemd сервис (рекомендуется)
+
+Создайте файл `/etc/systemd/system/totsoft.service`:
+
+```ini
+[Unit]
+Description=Totsoft Landing
+After=network.target
+
+[Service]
+Type=simple
+User=www-data
+WorkingDirectory=/var/www/totsoft
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+Environment=PORT=3000
+Environment=ORIGIN=https://totsoft.net
+EnvironmentFile=/var/www/totsoft/.env
+ExecStart=/usr/local/bin/bun build/index.js
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Команды управления:
 
 ```bash
-bun run check
+sudo systemctl daemon-reload
+sudo systemctl enable totsoft
+sudo systemctl start totsoft
+sudo systemctl status totsoft
 ```
+
+### 4. Nginx reverse proxy
+
+```nginx
+server {
+    listen 80;
+    server_name totsoft.net www.totsoft.net;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    listen 443 ssl http2;
+    server_name totsoft.net www.totsoft.net;
+
+    ssl_certificate /etc/letsencrypt/live/totsoft.net/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/totsoft.net/privkey.pem;
+
+    location / {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection 'upgrade';
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+        proxy_cache_bypass $http_upgrade;
+    }
+
+    # Статические файлы с кэшированием
+    location ~* \.(js|css|png|jpg|jpeg|gif|ico|svg|woff|woff2)$ {
+        proxy_pass http://127.0.0.1:3000;
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # Precompressed files (gzip/brotli)
+    gzip_static on;
+    brotli_static on;
+}
+```
+
+## 🔧 Переменные окружения
+
+| Переменная      | Описание       | Пример                |
+| --------------- | -------------- | --------------------- |
+| `SMTP_USER`     | Email для SMTP | `dev@totsoft.net`     |
+| `SMTP_PASSWORD` | Пароль SMTP    | `your_password`       |
+| `HOST`          | Хост сервера   | `0.0.0.0`             |
+| `PORT`          | Порт сервера   | `3000`                |
+| `ORIGIN`        | URL сайта      | `https://totsoft.net` |
 
 ## 📁 Структура проекта
 
 ```
-totsoft-new/
-├── src/                    # SvelteKit приложение
+totsoft-landing/
+├── src/
 │   ├── lib/
 │   │   ├── components/     # Svelte компоненты
-│   │   │   ├── About.svelte
-│   │   │   ├── ContactForm.svelte
-│   │   │   ├── ErrorFallback.svelte
-│   │   │   ├── Footer.svelte
-│   │   │   ├── Hero.svelte
-│   │   │   ├── Navbar.svelte
-│   │   │   ├── Process.svelte
-│   │   │   ├── Services.svelte
-│   │   │   ├── TechStack.svelte
-│   │   │   └── TrustBar.svelte
 │   │   ├── config/         # Конфигурация
-│   │   │   └── constants.ts
-│   │   ├── services/       # Сервисы
-│   │   │   └── api.ts
+│   │   ├── services/       # API сервисы
 │   │   ├── types.ts        # TypeScript типы
 │   │   └── utils/          # Утилиты
-│   │       ├── checkAccreditation.ts
-│   │       ├── debounce.ts
-│   │       ├── downloadRequisites.ts
-│   │       └── validation.ts
-│   ├── routes/             # SvelteKit routes
-│   │   ├── +layout.svelte
-│   │   ├── +page.svelte
-│   │   ├── privacy/
-│   │   │   └── +page.svelte
-│   │   ├── api/
-│   │   │   └── send-email/
-│   │   │       └── +server.ts
-│   │   └── layout.css
+│   ├── routes/
+│   │   ├── +page.svelte    # Главная страница
+│   │   ├── +error.svelte   # Страница ошибок
+│   │   ├── +layout.svelte  # Layout
+│   │   ├── privacy/        # Политика конфиденциальности
+│   │   └── api/send-email/ # API endpoint
 │   └── app.html
 ├── static/                 # Статические файлы
-│   ├── logo.svg
-│   ├── logo-text.svg
-│   ├── robots.txt
-│   ├── sitemap.xml
-│   └── Карта Предприятия ООО Тотсофт.pdf
+├── build/                  # Собранное приложение (после build)
+├── .env.example            # Пример переменных окружения
 ├── svelte.config.js        # Конфигурация SvelteKit
-├── vite.config.ts          # Конфигурация Vite
-├── tsconfig.json           # Конфигурация TypeScript
 └── package.json
 ```
 
-## 🔧 Конфигурация
-
-### Переменные окружения
-
-**Переменные окружения:**
-
-- `SMTP_USER` - Email для отправки писем (dev@totsoft.net)
-- `SMTP_PASSWORD` - Пароль от почты для SMTP
-
-Эти переменные используются в SvelteKit API route (`src/routes/api/send-email/+server.ts`)
-
-### TypeScript
-
-Проект использует строгий режим TypeScript (`strict: true`) для максимальной типобезопасности.
-
-### Tailwind CSS
-
-Конфигурация Tailwind находится в `src/routes/layout.css` (Tailwind CSS v4 использует CSS-first конфигурацию).
-
 ## 🎨 Особенности
 
-- ✅ **Svelte 5 Runes** - современная реактивность с `$state`, `$derived`, `$effect`
-- ✅ **Валидация форм** - полная валидация всех полей с отображением ошибок
-- ✅ **SEO оптимизация** - мета-теги, Open Graph, структурированные данные, robots.txt, sitemap.xml
-- ✅ **Accessibility** - поддержка ARIA атрибутов, семантической разметки
-- ✅ **Адаптивный дизайн** - корректное отображение на всех устройствах
-- ✅ **TypeScript strict mode** - строгая типизация для надежности кода
-- ✅ **Error Boundary** - обработка ошибок рендеринга через `<svelte:boundary>`
-- ✅ **Server-Side Rendering** - SSR из коробки с SvelteKit
-- ✅ **API Routes** - встроенные API endpoints в SvelteKit
+- ✅ **Svelte 5 Runes** — `$state`, `$derived`, `$effect`, `$props`
+- ✅ **SEO оптимизация** — meta-теги, Open Graph, JSON-LD, sitemap.xml
+- ✅ **Accessibility** — ARIA атрибуты, семантическая разметка
+- ✅ **Адаптивный дизайн** — mobile-first
+- ✅ **TypeScript strict** — строгая типизация
+- ✅ **Error Boundary** — `<svelte:boundary>` для обработки ошибок
+- ✅ **CSP Headers** — Content Security Policy
+- ✅ **Precompression** — gzip/brotli для статики
 
 ## 🔒 Безопасность
 
-✅ **Безопасность реализована:**
+- ✅ SMTP пароли в приватных переменных окружения
+- ✅ Server-side валидация всех данных форм
+- ✅ XSS защита (экранирование HTML)
+- ✅ Rate limiting на API endpoints
+- ✅ CSP заголовки
+- ✅ HTTPS через Nginx
 
-1. Все секреты (SMTP пароли) хранятся только в приватных переменных окружения (`$env/dynamic/private`)
-2. SMTP настройки недоступны в браузерном коде
-3. Валидация данных выполняется на стороне сервера (SvelteKit API route)
-4. Экранирование HTML для защиты от XSS
-5. Письма отправляются через защищенное SMTP соединение (SSL/TLS)
-
-## 📝 API
-
-### Отправка формы контакта
-
-Форма отправляет данные через SvelteKit API route (`/api/send-email`).
-
-**SvelteKit API Route:**
-
-- Endpoint: `POST /api/send-email`
-- Валидация данных на сервере
-- Отправка писем через Beget SMTP (если настроен `SMTP_PASSWORD`)
-- В dev режиме без `SMTP_PASSWORD` возвращает симуляцию
-
-```typescript
-import { submitContactForm } from '$lib/services/api';
-
-const result = await submitContactForm({
-	name: 'Иван Иванов',
-	email: 'ivan@example.com',
-	phone: '+7 (999) 123-45-67',
-	description: 'Описание проекта...'
-});
-
-if (result.success) {
-	console.log('Заявка отправлена!');
-} else {
-	console.error('Ошибка:', result.error);
-}
-```
-
-## 🧪 Разработка
-
-### Проверка типов
+## 🧪 Скрипты
 
 ```bash
-bun run check
+bun dev          # Режим разработки
+bun run build    # Сборка для продакшена
+bun run preview  # Превью сборки
+bun run check    # Проверка типов
+bun run lint     # Проверка линтером
+bun run full     # Полная проверка + сборка
+bun start        # Запуск собранного приложения
 ```
-
-### Добавление нового компонента
-
-1. Создайте файл в `src/lib/components/`
-2. Используйте Svelte 5 Runes (`$state`, `$derived`, `$props`)
-3. Используйте TypeScript и строгую типизацию
-4. Следуйте существующим паттернам проекта
-
-### Валидация
-
-Используйте утилиты из `src/lib/utils/validation.ts`:
-
-```typescript
-import { validateEmail, validatePhone } from '$lib/utils/validation';
-
-const emailResult = validateEmail(email);
-if (!emailResult.isValid) {
-	console.error(emailResult.message);
-}
-```
-
-## 📦 Деплой
-
-### SvelteKit
-
-SvelteKit поддерживает множество адаптеров для деплоя:
-
-**Vercel (рекомендуется):**
-
-```bash
-npm i -D @sveltejs/adapter-vercel
-```
-
-**Node.js сервер:**
-
-```bash
-npm i -D @sveltejs/adapter-node
-```
-
-**Статический сайт:**
-
-```bash
-npm i -D @sveltejs/adapter-static
-```
-
-## 🤝 Вклад в проект
-
-1. Форкните репозиторий
-2. Создайте ветку для фичи (`git checkout -b feature/AmazingFeature`)
-3. Закоммитьте изменения (`git commit -m 'Add some AmazingFeature'`)
-4. Запушьте в ветку (`git push origin feature/AmazingFeature`)
-5. Откройте Pull Request
 
 ## 📄 Лицензия
 
-Проект является собственностью ООО "Тотсофт". См. файл [LICENSE](LICENSE) для подробностей.
+MIT License © 2025 [ООО "Тотсофт"](https://totsoft.net)
+
+Подробности в файле [LICENSE](LICENSE).
 
 ## 📞 Контакты
 
-- Email: dev@totsoft.net
-- Website: https://totsoft.net
+- **Email:** dev@totsoft.net
+- **Telegram:** [@totsoft_official](https://t.me/totsoft_official)
+- **Website:** [https://totsoft.net](https://totsoft.net)
 
 ---
 

@@ -20,14 +20,7 @@
 				<span>Вернуться на главную</span>
 			</a>
 			<h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Политика конфиденциальности</h1>
-			<p class="text-slate-400 text-lg">
-				Последнее обновление:
-				{new Date().toLocaleDateString('ru-RU', {
-					year: 'numeric',
-					month: 'long',
-					day: 'numeric'
-				})}
-			</p>
+			<p class="text-slate-400 text-lg">Последнее обновление: 25 ноября 2025 г.</p>
 		</div>
 
 		<!-- Content -->
@@ -152,8 +145,8 @@
 					</p>
 					<p>
 						<strong class="text-white">Сайт:</strong>
-						<a href="https://totsoft.ru" class="text-primary-400 hover:text-primary-300">
-							https://totsoft.ru
+						<a href="https://totsoft.net" class="text-primary-400 hover:text-primary-300">
+							https://totsoft.net
 						</a>
 					</p>
 				</div>

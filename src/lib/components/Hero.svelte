@@ -12,9 +12,7 @@
 			class="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] bg-indigo-600/10 rounded-full blur-[120px] animate-pulse-slow"
 			style="animation-delay: 1.5s"
 		></div>
-		<div
-			class="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20"
-		></div>
+		<div class="absolute inset-0 bg-[url('/noise.svg')] opacity-20"></div>
 	</div>
 
 	<div

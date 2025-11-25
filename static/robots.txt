@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://totsoft.ru/sitemap.xml
+Sitemap: https://totsoft.net/sitemap.xml
 
 # Disallow admin and private areas (if any)
 Disallow: /api/

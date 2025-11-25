@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { resolve } from '$app/paths';
 	import { COMPANY_INFO } from '$lib/config/constants';
 </script>
 
@@ -72,10 +71,7 @@
 					<a href="#contact" class="text-slate-400 hover:text-white transition-colors text-sm">
 						Тендеры
 					</a>
-					<a
-						href={resolve('/privacy')}
-						class="text-slate-400 hover:text-white transition-colors text-sm"
-					>
+					<a href="/privacy" class="text-slate-400 hover:text-white transition-colors text-sm">
 						Политика конфиденциальности
 					</a>
 					<a href="#contact" class="text-slate-400 hover:text-white transition-colors text-sm">

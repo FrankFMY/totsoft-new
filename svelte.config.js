@@ -1,17 +1,32 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-node';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
-	// Consult https://svelte.dev/docs/kit/integrations
-	// for more information about preprocessors
 	preprocess: vitePreprocess(),
 
 	kit: {
-		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
-		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
-		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
-		adapter: adapter()
+		adapter: adapter({
+			// Директория для билда (по умолчанию 'build')
+			out: 'build',
+			// Включить precompression для gzip/brotli
+			precompress: true,
+			// Переменная окружения для хоста
+			envPrefix: ''
+		}),
+		// CSP для безопасности
+		csp: {
+			mode: 'auto',
+			directives: {
+				'default-src': ['self'],
+				'script-src': ['self', 'unsafe-inline'],
+				'style-src': ['self', 'unsafe-inline', 'https://fonts.googleapis.com'],
+				'font-src': ['self', 'https://fonts.gstatic.com'],
+				'img-src': ['self', 'data:', 'https:'],
+				'connect-src': ['self'],
+				'frame-ancestors': ['none']
+			}
+		}
 	}
 };
 

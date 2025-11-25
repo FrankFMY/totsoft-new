@@ -189,14 +189,7 @@
 						</button>
 					</div>
 				{:else}
-					<form
-						onsubmit={(e) => {
-							e.preventDefault();
-							handleSubmit(e);
-						}}
-						class="space-y-6 max-w-2xl mx-auto"
-						novalidate
-					>
+					<form onsubmit={handleSubmit} class="space-y-6 max-w-2xl mx-auto" novalidate>
 						<!-- Сообщение об ошибке -->
 						{#if status === ContactStatus.ERROR && errorMessage}
 							<div

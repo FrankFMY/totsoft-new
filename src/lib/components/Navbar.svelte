@@ -101,8 +101,9 @@
 
 	<!-- Mobile Nav -->
 	{#if isMenuOpen}
-		<nav
+		<div
 			class="md:hidden absolute top-full left-0 w-full bg-dark-800 border-b border-white/10 shadow-2xl"
+			role="navigation"
 			aria-label="Мобильная навигация"
 		>
 			<div class="px-4 pt-2 pb-6 space-y-2">
@@ -126,6 +127,6 @@
 					Обсудить проект
 				</button>
 			</div>
-		</nav>
+		</div>
 	{/if}
 </nav>

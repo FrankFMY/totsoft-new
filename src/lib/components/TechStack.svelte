@@ -88,12 +88,8 @@
 	];
 
 	const allTechnologies = categories.flatMap((cat) => cat.technologies);
-	const marqueeTechnologies = [
-		...allTechnologies,
-		...allTechnologies,
-		...allTechnologies,
-		...allTechnologies
-	];
+	// Дублируем только 2 раза для бесшовной CSS анимации
+	const marqueeTechnologies = [...allTechnologies, ...allTechnologies];
 </script>
 
 <section id="stack" class="py-16 bg-dark-800 border-y border-white/5 overflow-hidden relative">
