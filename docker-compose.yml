@@ -1,0 +1,39 @@
+# ============================================
+# Docker Compose для Totsoft Landing
+# ============================================
+# Использование:
+#   docker-compose up -d --build
+#   docker-compose logs -f
+#   docker-compose down
+# ============================================
+
+services:
+  totsoft:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: totsoft-landing
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+      - PORT=3000
+      - ORIGIN=https://totsoft.net
+      - SMTP_USER=${SMTP_USER:-dev@totsoft.net}
+      - SMTP_PASSWORD=${SMTP_PASSWORD}
+    env_file:
+      - .env
+    restart: unless-stopped
+    healthcheck:
+      test: ['CMD', 'wget', '--no-verbose', '--tries=1', '--spider', 'http://localhost:3000/']
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 10s
+    networks:
+      - totsoft-network
+
+networks:
+  totsoft-network:
+    driver: bridge

@@ -1,0 +1,50 @@
+# Dependencies
+node_modules
+.svelte-kit
+
+# Build output (создаётся внутри контейнера)
+build
+dist
+
+# Git
+.git
+.gitignore
+
+# Environment files (передаются через docker-compose)
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Test files
+*.test.*
+*.spec.*
+__tests__
+coverage
+
+# Documentation
+*.md
+!README.md
+
+# Drafts (старый проект)
+drafts
+
+# Other
+.vercel
+.netlify
+

@@ -148,6 +148,36 @@ server {
 }
 ```
 
+### 5. Docker (альтернативный способ)
+
+```bash
+# Сборка и запуск через Docker Compose
+docker-compose up -d --build
+
+# Просмотр логов
+docker-compose logs -f
+
+# Остановка
+docker-compose down
+```
+
+Или вручную:
+
+```bash
+# Сборка образа
+docker build -t totsoft-landing .
+
+# Запуск контейнера
+docker run -d \
+  --name totsoft \
+  -p 3000:3000 \
+  -e ORIGIN=https://totsoft.net \
+  -e SMTP_USER=dev@totsoft.net \
+  -e SMTP_PASSWORD=your_password \
+  --restart unless-stopped \
+  totsoft-landing
+```
+
 ## 🔧 Переменные окружения
 
 | Переменная      | Описание       | Пример                |
