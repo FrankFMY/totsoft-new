@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-node';
+import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -7,12 +7,8 @@ const config = {
 
 	kit: {
 		adapter: adapter({
-			// Директория для билда (по умолчанию 'build')
-			out: 'build',
-			// Включить precompression для gzip/brotli
-			precompress: true,
-			// Переменная окружения для хоста
-			envPrefix: ''
+			// Используем актуальный Node runtime Vercel (поддержка Nodemailer)
+			runtime: 'nodejs22.x'
 		}),
 		// CSP для безопасности
 		csp: {

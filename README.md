@@ -59,7 +59,35 @@ bun run build
 
 Создаст папку `build/` с готовым приложением.
 
-### 2. Запуск на сервере (BrainyCP / VPS)
+### 2. Деплой на Vercel
+
+1. Установите Vercel CLI (если ещё не установлен):
+   ```bash
+   npm i -g vercel
+   ```
+2. Авторизуйтесь и привяжите проект:
+   ```bash
+   vercel login
+   vercel link
+   ```
+3. Добавьте переменные окружения (SMTP_PASSWORD обязателен):
+   ```bash
+   vercel env add SMTP_USER
+   vercel env add SMTP_PASSWORD
+   vercel env add ORIGIN
+   ```
+   Рекомендуемые значения:
+   - `SMTP_USER`: `dev@totsoft.net`
+   - `SMTP_PASSWORD`: пароль от почты
+   - `ORIGIN`: `https://totsoft.net`
+4. Задеплойте проект:
+   ```bash
+   vercel deploy --prod
+   ```
+
+> Адаптер `@sveltejs/adapter-vercel` использует runtime `nodejs18.x`, поэтому Nodemailer работает внутри Serverless Functions без дополнительной настройки.
+
+### 3. Запуск на сервере (BrainyCP / VPS)
 
 ```bash
 # Установка зависимостей на сервере
@@ -72,7 +100,7 @@ bun run build
 HOST=0.0.0.0 PORT=3000 ORIGIN=https://totsoft.net bun build/index.js
 ```
 
-### 3. Systemd сервис (рекомендуется)
+### 4. Systemd сервис (рекомендуется)
 
 Создайте файл `/etc/systemd/system/totsoft.service`:
 
@@ -107,7 +135,7 @@ sudo systemctl start totsoft
 sudo systemctl status totsoft
 ```
 
-### 4. Nginx reverse proxy
+### 5. Nginx reverse proxy
 
 ```nginx
 server {
@@ -148,7 +176,7 @@ server {
 }
 ```
 
-### 5. Docker (альтернативный способ)
+### 6. Docker (альтернативный способ)
 
 ```bash
 # Сборка и запуск через Docker Compose
@@ -247,15 +275,15 @@ bun start        # Запуск собранного приложения
 
 ## 📄 Лицензия
 
-MIT License © 2025 [ООО "Тотсофт"](https://totsoft.net)
+MIT License © 2025 [Артём Прянишников](Артём Прянишников)
 
 Подробности в файле [LICENSE](LICENSE).
 
 ## 📞 Контакты
 
-- **Email:** dev@totsoft.net
-- **Telegram:** [@totsoft_official](https://t.me/totsoft_official)
-- **Website:** [https://totsoft.net](https://totsoft.net)
+- **Email:** Pryanishnikovartem@gmail.com
+- **Telegram:** [@frankfmy](https://t.me/frankfmy)
+- **GitHub:** [https://github.com/FrankFMY](https://github.com/FrankFMY)
 
 ---
 
